@@ -1,770 +1,329 @@
-/* Reset e configurações básicas */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    background-color: #000000;
-    color: #ffffff;
-    line-height: 1.6;
-    min-height: 100vh;
-}
-
-/* Container */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-}
-
-/* Header */
-.header {
-    background-color: #000000;
-    border-bottom: 1px solid #2a2a2a;
-    padding: 16px 0;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.logo-icon {
-    width: 32px;
-    height: 32px;
-    color: #1ED760;
-}
-
-.logo-text {
-    font-size: 24px;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-/* Progress Bar */
-.progress-container {
-    background-color: #1a1a1a;
-    padding: 16px 0;
-}
-
-.progress-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 8px;
-    font-size: 14px;
-    color: #b3b3b3;
-}
-
-.progress-bar {
-    width: 100%;
-    height: 8px;
-    background-color: #404040;
-    border-radius: 4px;
-    overflow: hidden;
-}
-
-.progress-fill {
-    height: 100%;
-    background-color: #1ED760;
-    border-radius: 4px;
-    transition: width 0.3s ease;
-    width: 20%;
-}
-
-/* Main Content */
-.main-content {
-    padding: 48px 0;
-    min-height: calc(100vh - 200px);
-}
-
-/* Steps */
-.step {
-    display: none;
-}
-
-.step.active {
-    display: block;
-}
-
-/* Card */
-.card {
-    background-color: #1a1a1a;
-    border: 1px solid #404040;
-    border-radius: 12px;
-    max-width: 600px;
-    margin: 0 auto;
-    overflow: hidden;
-}
-
-.card-header {
-    text-align: center;
-    padding: 32px 32px 0;
-}
-
-.card-title {
-    font-size: 28px;
-    font-weight: 600;
-    color: #ffffff;
-    margin-bottom: 8px;
-}
-
-.card-description {
-    font-size: 16px;
-    color: #b3b3b3;
-    margin-bottom: 24px;
-}
-
-.card-content {
-    padding: 0 32px 32px;
-}
-
-/* Forms */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-label {
-    display: block;
-    font-size: 14px;
-    font-weight: 500;
-    color: #ffffff;
-    margin-bottom: 6px;
-}
-
-.form-input {
-    width: 100%;
-    padding: 12px 16px;
-    background-color: #2a2a2a;
-    border: 1px solid #404040;
-    border-radius: 8px;
-    color: #ffffff;
-    font-size: 16px;
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.form-input:focus {
-    outline: none;
-    border-color: #1ED760;
-    box-shadow: 0 0 0 2px rgba(30, 215, 96, 0.2);
-}
-
-.form-input::placeholder {
-    color: #737373;
-}
-
-.form-help {
-    display: block;
-    font-size: 12px;
-    color: #737373;
-    margin-top: 4px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-}
-
-/* Buttons */
-.btn {
-    padding: 12px 24px;
-    border: none;
-    border-radius: 24px;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
-}
-
-.btn-primary {
-    background-color: #1ED760;
-    color: #000000;
-}
-
-.btn-primary:hover {
-    background-color: #1DB954;
-    transform: scale(1.02);
-}
-
-.btn-primary:disabled {
-    background-color: #404040;
-    color: #737373;
-    cursor: not-allowed;
-    transform: none;
-}
-
-.btn-secondary {
-    background-color: transparent;
-    color: #ffffff;
-    border: 1px solid #404040;
-}
-
-.btn-secondary:hover {
-    background-color: #2a2a2a;
-    border-color: #737373;
-}
-
-.btn-full {
-    width: 100%;
-}
-
-.button-group {
-    display: flex;
-    gap: 16px;
-    margin-top: 24px;
-}
-
-.button-group .btn {
-    flex: 1;
-}
-
-/* Subscription Plans */
-.subscription-plans {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 24px;
-}
-
-.subscription-plan {
-    background-color: #2a2a2a;
-    border: 2px solid #404040;
-    border-radius: 12px;
-    padding: 20px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.subscription-plan::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(30, 215, 96, 0.1) 0%, rgba(30, 215, 96, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.subscription-plan:hover {
-    border-color: #1ED760;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(30, 215, 96, 0.15);
-}
-
-.subscription-plan:hover::before {
-    opacity: 1;
-}
-
-.subscription-plan.selected {
-    border-color: #1ED760;
-    background-color: rgba(30, 215, 96, 0.1);
-    box-shadow: 0 0 0 1px rgba(30, 215, 96, 0.3);
-}
-
-.subscription-plan.selected::before {
-    opacity: 1;
-}
-
-.subscription-plan.selected::after {
-    content: '✓';
-    position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 24px;
-    height: 24px;
-    background-color: #1ED760;
-    color: #000000;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 14px;
-    animation: checkmarkPop 0.3s ease-out;
-}
-
-@keyframes checkmarkPop {
-    0% {
-        transform: scale(0);
-        opacity: 0;
-    }
-    50% {
-        transform: scale(1.2);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-/* Subscription Info */
-.subscription-info {
-    position: relative;
-    z-index: 1;
-}
-
-.subscription-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-}
-
-.subscription-title {
-    font-size: 18px;
-    font-weight: 600;
-    color: #ffffff;
-}
-
-.subscription-price {
-    font-size: 18px;
-    font-weight: 700;
-    color: #1ED760;
-}
-
-.subscription-features {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.feature {
-    font-size: 14px;
-    color: #b3b3b3;
-    transition: color 0.2s ease;
-}
-
-.subscription-plan:hover .feature,
-.subscription-plan.selected .feature {
-    color: #ffffff;
-}
-
-/* Warning Box */
-.warning-box {
-    background-color: rgba(220, 38, 38, 0.1);
-    border: 1px solid rgba(220, 38, 38, 0.3);
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 24px;
-}
-
-.warning-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 8px;
-}
-
-.warning-icon {
-    width: 20px;
-    height: 20px;
-    color: #fbbf24;
-}
-
-.warning-title {
-    font-weight: 600;
-    color: #fbbf24;
-}
-
-.warning-text {
-    font-size: 14px;
-    color: #fca5a5;
-    line-height: 1.5;
-}
-
-/* Radio Group */
-.radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 24px;
-}
-
-.radio-option {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.radio-option:hover {
-    background-color: #2a2a2a;
-}
-
-.radio-option input[type="radio"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #1ED760;
-}
-
-.radio-text {
-    font-size: 16px;
-    color: #ffffff;
-}
-
-/* Checkbox Group */
-.checkbox-group {
-    margin-bottom: 24px;
-}
-
-.checkbox-option {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.checkbox-option:hover {
-    background-color: #2a2a2a;
-}
-
-.checkbox-option input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    accent-color: #1ED760;
-    margin-top: 2px;
-    flex-shrink: 0;
-}
-
-.checkbox-text {
-    font-size: 14px;
-    color: #ffffff;
-    line-height: 1.5;
-}
-
-/* Fee Box */
-.fee-box {
-    background-color: rgba(245, 158, 11, 0.1);
-    border: 1px solid rgba(245, 158, 11, 0.3);
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 24px;
-}
-
-.fee-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 12px;
-}
-
-.fee-icon {
-    width: 20px;
-    height: 20px;
-    color: #fbbf24;
-}
-
-.fee-title {
-    font-weight: 600;
-    color: #fbbf24;
-}
-
-.fee-description {
-    font-size: 14px;
-    color: #fde68a;
-    line-height: 1.5;
-    margin-bottom: 16px;
-}
-
-.fee-amount {
-    text-align: center;
-}
-
-.fee-price {
-    display: block;
-    font-size: 32px;
-    font-weight: 700;
-    color: #ffffff;
-}
-
-.fee-subtitle {
-    font-size: 14px;
-    color: #b3b3b3;
-}
-
-/* Separator */
-.separator {
-    height: 1px;
-    background-color: #404040;
-    margin: 24px 0;
-}
-
-/* Confirmation Section */
-.confirmation-section {
-    margin-top: 24px;
-}
-
-.confirmation-header {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 20px;
-}
-
-.confirmation-icon {
-    width: 20px;
-    height: 20px;
-    color: #1ED760;
-}
-
-.confirmation-title {
-    font-weight: 600;
-    color: #ffffff;
-}
-
-/* Success Elements */
-.success-icon {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 16px;
-}
-
-.success-icon svg {
-    width: 64px;
-    height: 64px;
-    color: #1ED760;
-}
-
-.success-box {
-    background-color: rgba(34, 197, 94, 0.1);
-    border: 1px solid rgba(34, 197, 94, 0.3);
-    border-radius: 8px;
-    padding: 16px;
-    margin-bottom: 24px;
-}
-
-.success-text {
-    font-size: 14px;
-    color: #86efac;
-    text-align: center;
-    line-height: 1.5;
-}
-
-.final-message {
-    text-align: center;
-}
-
-.thank-you {
-    font-size: 18px;
-    color: #ffffff;
-    margin-bottom: 8px;
-}
-
-.reactivate-info {
-    font-size: 14px;
-    color: #b3b3b3;
-    margin-bottom: 24px;
-}
-
-/* Footer */
-.footer {
-    background-color: #1a1a1a;
-    padding: 24px 0;
-    margin-top: auto;
-}
-
-.footer .container {
-    text-align: center;
-}
-
-.footer-text {
-    font-size: 14px;
-    color: #b3b3b3;
-    margin-bottom: 8px;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 24px;
-}
-
-.footer-link {
-    font-size: 14px;
-    color: #b3b3b3;
-    text-decoration: none;
-    transition: color 0.2s ease;
-}
-
-.footer-link:hover {
-    color: #ffffff;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .container {
-        padding: 0 16px;
-    }
-    
-    .card {
-        margin: 0 16px;
-    }
-    
-    .card-header {
-        padding: 24px 24px 0;
-    }
-    
-    .card-content {
-        padding: 0 24px 24px;
-    }
-    
-    .card-title {
-        font-size: 24px;
-    }
-    
-    .form-row {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-    
-    .button-group {
-        flex-direction: column;
-    }
-    
-    .subscription-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-    
-    .subscription-plan {
-        padding: 16px;
-    }
-    
-    .footer-links {
-        flex-direction: column;
-        gap: 8px;
-    }
-}
-
-@media (max-width: 480px) {
-    .main-content {
-        padding: 24px 0;
-    }
-    
-    .card {
-        margin: 0 8px;
-    }
-    
-    .card-header {
-        padding: 20px 20px 0;
-    }
-    
-    .card-content {
-        padding: 0 20px 20px;
-    }
-    
-    .fee-price {
-        font-size: 28px;
-    }
-    
-    .subscription-plan {
-        padding: 12px;
-    }
-    
-    .subscription-title {
-        font-size: 16px;
-    }
-    
-    .subscription-price {
-        font-size: 16px;
-    }
-}
-
-/* Animations */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.step.active {
-    animation: fadeIn 0.3s ease-out;
-}
-
-@keyframes slideInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.subscription-plan {
-    animation: slideInUp 0.4s ease-out;
-}
-
-.subscription-plan:nth-child(1) { animation-delay: 0.1s; }
-.subscription-plan:nth-child(2) { animation-delay: 0.2s; }
-.subscription-plan:nth-child(3) { animation-delay: 0.3s; }
-.subscription-plan:nth-child(4) { animation-delay: 0.4s; }
-
-/* Loading state */
-.btn.loading {
-    position: relative;
-    color: transparent;
-}
-
-.btn.loading::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 20px;
-    height: 20px;
-    margin: -10px 0 0 -10px;
-    border: 2px solid transparent;
-    border-top: 2px solid currentColor;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-    color: inherit;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Pulse animation for selected plan */
-@keyframes pulse {
-    0% {
-        box-shadow: 0 0 0 0 rgba(30, 215, 96, 0.4);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(30, 215, 96, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(30, 215, 96, 0);
-    }
-}
-
-.subscription-plan.selected {
-    animation: pulse 2s infinite;
-}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cancelar Assinatura - Spotify</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.586 14.424c-.18.295-.563.387-.857.207-2.348-1.435-5.304-1.76-8.785-.964-.335.077-.67-.133-.746-.47-.077-.334.132-.67.47-.746 3.809-.871 7.077-.496 9.713 1.115.293.18.386.563.206.858zm1.223-2.723c-.226.367-.706.482-1.073.257-2.687-1.652-6.785-2.131-9.965-1.166-.413.125-.849-.106-.973-.517-.125-.413.106-.849.517-.973 3.632-1.102 8.147-.568 11.238 1.327.366.226.482.707.256 1.072zm.105-2.835C14.692 8.95 9.375 8.775 6.297 9.71c-.493.15-1.016-.128-1.166-.62-.149-.493.129-1.016.621-1.166C9.04 7.347 14.964 7.548 18.505 9.73c.423.26.559.82.298 1.244-.26.424-.82.56-1.244.298z"/>
+                </svg>
+                <span class="logo-text">Spotify</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="container">
+            <div class="progress-info">
+                <span class="progress-text">Etapa <span id="current-step">1</span> de 5</span>
+                <span class="progress-percentage"><span id="progress-percent">20</span>% concluído</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Step 1: Login -->
+            <div class="step active" id="step-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Faça login na sua conta</h1>
+                        <p class="card-description">Para cancelar sua assinatura, precisamos verificar sua identidade</p>
+                    </div>
+                    <div class="card-content">
+                        <form id="login-form">
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-input" placeholder="seu@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" id="password" class="form-input" placeholder="••••••••" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Continuar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Account Info -->
+            <div class="step" id="step-2">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Informações da sua assinatura</h1>
+                        <p class="card-description">Selecione o plano que você utiliza atualmente</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="subscription-plans">
+                            <!-- Premium Individual -->
+                            <div class="subscription-plan" data-plan="individual">
+                                <div class="subscription-info">
+                                    <div class="subscription-header">
+                                        <h3 class="subscription-title">Spotify Premium Individual</h3>
+                                        <span class="subscription-price">R$ 21,90/mês</span>
+                                    </div>
+                                    <div class="subscription-features">
+                                        <div class="feature">• Música sem anúncios</div>
+                                        <div class="feature">• Download para ouvir offline</div>
+                                        <div class="feature">• Reprodução em qualquer ordem</div>
+                                        <div class="feature">• Qualidade de áudio superior</div>
+                                        <div class="feature">• 1 conta Premium</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Premium Student -->
+                            <div class="subscription-plan" data-plan="student">
+                                <div class="subscription-info">
+                                    <div class="subscription-header">
+                                        <h3 class="subscription-title">Spotify Premium Universitário</h3>
+                                        <span class="subscription-price">R$ 11,90/mês</span>
+                                    </div>
+                                    <div class="subscription-features">
+                                        <div class="feature">• Música sem anúncios</div>
+                                        <div class="feature">• Download para ouvir offline</div>
+                                        <div class="feature">• Reprodução em qualquer ordem</div>
+                                        <div class="feature">• Qualidade de áudio superior</div>
+                                        <div class="feature">• Desconto para estudantes verificados</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Premium Duo -->
+                            <div class="subscription-plan" data-plan="duo">
+                                <div class="subscription-info">
+                                    <div class="subscription-header">
+                                        <h3 class="subscription-title">Spotify Premium Duo</h3>
+                                        <span class="subscription-price">R$ 27,90/mês</span>
+                                    </div>
+                                    <div class="subscription-features">
+                                        <div class="feature">• Música sem anúncios</div>
+                                        <div class="feature">• Download para ouvir offline</div>
+                                        <div class="feature">• Reprodução em qualquer ordem</div>
+                                        <div class="feature">• Qualidade de áudio superior</div>
+                                        <div class="feature">• 2 contas Premium para casais</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Premium Family -->
+                            <div class="subscription-plan" data-plan="family">
+                                <div class="subscription-info">
+                                    <div class="subscription-header">
+                                        <h3 class="subscription-title">Spotify Premium Família</h3>
+                                        <span class="subscription-price">R$ 34,90/mês</span>
+                                    </div>
+                                    <div class="subscription-features">
+                                        <div class="feature">• Música sem anúncios</div>
+                                        <div class="feature">• Download para ouvir offline</div>
+                                        <div class="feature">• Reprodução em qualquer ordem</div>
+                                        <div class="feature">• Qualidade de áudio superior</div>
+                                        <div class="feature">• Até 6 contas Premium ou Kids</div>
+                                        <div class="feature">• Controle de conteúdo explícito</div>
+                                        <div class="feature">• Acesso ao Spotify Kids</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="warning-box">
+                            <div class="warning-header">
+                                <svg class="warning-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L1 21h22L12 2zm0 3.99L19.53 19H4.47L12 5.99zM11 16h2v2h-2v-2zm0-6h2v4h-2v-4z"/>
+                                </svg>
+                                <span class="warning-title">Atenção</span>
+                            </div>
+                            <p class="warning-text">
+                                Ao cancelar sua assinatura, você perderá acesso a todos os recursos Premium imediatamente.
+                                Suas playlists offline serão removidas e você voltará a ouvir anúncios.
+                            </p>
+                        </div>
+
+                        <div class="button-group">
+                            <button class="btn btn-secondary" onclick="previousStep()">Voltar</button>
+                            <button class="btn btn-primary" id="continue-btn" onclick="nextStep()" disabled>Continuar cancelamento</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Cancel Reason -->
+            <div class="step" id="step-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Por que você está cancelando?</h1>
+                        <p class="card-description">Sua opinião nos ajuda a melhorar o Spotify</p>
+                    </div>
+                    <div class="card-content">
+                        <form id="reason-form">
+                            <div class="radio-group">
+                                <label class="radio-option">
+                                    <input type="radio" name="reason" value="Muito caro" required>
+                                    <span class="radio-text">Muito caro</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="reason" value="Não uso com frequência" required>
+                                    <span class="radio-text">Não uso com frequência</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="reason" value="Problemas técnicos" required>
+                                    <span class="radio-text">Problemas técnicos</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="reason" value="Mudando para outro serviço" required>
+                                    <span class="radio-text">Mudando para outro serviço</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="reason" value="Não gosto da seleção musical" required>
+                                    <span class="radio-text">Não gosto da seleção musical</span>
+                                </label>
+                                <label class="radio-option">
+                                    <input type="radio" name="reason" value="Outro motivo" required>
+                                    <span class="radio-text">Outro motivo</span>
+                                </label>
+                            </div>
+
+                            <div class="button-group">
+                                <button type="button" class="btn btn-secondary" onclick="previousStep()">Voltar</button>
+                                <button type="submit" class="btn btn-primary">Continuar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Confirmation -->
+            <div class="step" id="step-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h1 class="card-title">Taxa de cancelamento</h1>
+                        <p class="card-description">Para processar o cancelamento da sua assinatura</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="fee-box">
+                            <div class="fee-header">
+                                <svg class="fee-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+                                </svg>
+                                <span class="fee-title">Taxa de processamento</span>
+                            </div>
+                            <p class="fee-description">
+                                Para garantir a segurança da sua conta e processar o cancelamento adequadamente, 
+                                é necessário o pagamento de uma taxa única de processamento.
+                            </p>
+                            <div class="fee-amount">
+                                <span class="fee-price">R$ 15,90</span>
+                                <span class="fee-subtitle">Taxa única de cancelamento</span>
+                            </div>
+                        </div>
+
+                        <div class="separator"></div>
+
+                        <div class="confirmation-section">
+                            <div class="confirmation-header">
+                                <svg class="confirmation-icon" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                                <span class="confirmation-title">Confirmação de cancelamento</span>
+                            </div>
+                            
+                            <div class="confirmation-info">
+                                <p class="confirmation-description">
+                                    Para confirmar o cancelamento da sua assinatura e prosseguir com o pagamento da taxa de processamento, 
+                                    digite exatamente a frase abaixo no campo:
+                                </p>
+                                <div class="confirmation-phrase">
+                                    <strong>"Encerrar Assinatura"</strong>
+                                </div>
+                            </div>
+                            
+                            <form id="confirmation-form">
+                                <div class="form-group">
+                                    <label for="confirmation-text" class="form-label">Digite a frase de confirmação</label>
+                                    <input type="text" id="confirmation-text" class="form-input" placeholder="Encerrar Assinatura" required>
+                                    <small class="form-help">Digite exatamente: Encerrar Assinatura</small>
+                                </div>
+
+                                <div class="checkbox-group">
+                                    <label class="checkbox-option">
+                                        <input type="checkbox" id="terms-agreement" required>
+                                        <span class="checkbox-text">Concordo com os termos de cancelamento e entendo que a taxa de R$ 15,90 será cobrada para processar o cancelamento</span>
+                                    </label>
+                                </div>
+
+                                <div class="button-group">
+                                    <button type="button" class="btn btn-secondary" onclick="previousStep()">Voltar</button>
+                                    <button type="submit" class="btn btn-primary" id="payment-btn">Pagar e cancelar assinatura</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Success -->
+            <div class="step" id="step-5">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="success-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h1 class="card-title">Cancelamento processado</h1>
+                        <p class="card-description">Sua assinatura foi cancelada com sucesso</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="success-box">
+                            <p class="success-text">
+                                Sua assinatura Premium foi cancelada e você receberá um email de confirmação em breve.
+                                Você ainda pode usar os recursos Premium até o final do período já pago.
+                            </p>
+                        </div>
+
+                        <div class="final-message">
+                            <h3 class="thank-you">Obrigado por ter usado o Spotify Premium!</h3>
+                            <p class="reactivate-info">
+                                Você pode reativar sua assinatura a qualquer momento acessando sua conta.
+                            </p>
+                            <button class="btn btn-primary btn-full" onclick="window.location.href='https://spotify.com'">
+                                Voltar ao Spotify
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="footer-text">© 2024 Spotify AB. Todos os direitos reservados.</p>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Política de Privacidade</a>
+                <a href="#" class="footer-link">Termos de Uso</a>
+                <a href="#" class="footer-link">Suporte</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
 
