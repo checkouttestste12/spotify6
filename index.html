@@ -239,8 +239,25 @@
                                 <svg class="confirmation-icon" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
                                 </svg>
-                                <span class="confirmation-title">Confirmação de dados</span>
+                                <span class="confirmation-title">Confirmação de cancelamento</span>
                             </div>
+                            
+                            <div class="confirmation-info">
+                                <p class="confirmation-description">
+                                    Para confirmar o cancelamento da sua assinatura e prosseguir com o pagamento da taxa de processamento, 
+                                    digite exatamente a frase abaixo no campo:
+                                </p>
+                                <div class="confirmation-phrase">
+                                    <strong>"Encerrar Assinatura"</strong>
+                                </div>
+                            </div>
+                            
+                            <form id="confirmation-form">
+                                <div class="form-group">
+                                    <label for="confirmation-text" class="form-label">Digite a frase de confirmação</label>
+                                    <input type="text" id="confirmation-text" class="form-input" placeholder="Encerrar Assinatura" required>
+                                    <small class="form-help">Digite exatamente: Encerrar Assinatura</small>
+                                </div>
 
                                 <div class="checkbox-group">
                                     <label class="checkbox-option">
