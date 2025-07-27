@@ -6,9 +6,7 @@ let formData = {
     password: '',
     plan: '',
     reason: '',
-    fullName: '',
-    phone: '',
-    birthDate: ''
+    confirmationText: ''
 };
 
 // URL para redirecionamento do pagamento - ALTERE AQUI PARA SEU LINK ESPECÍFICO
@@ -97,23 +95,7 @@ function setupPlanSelection() {
 
 // Configurar formatação automática de inputs
 function setupInputFormatting() {
-    // Formatação do telefone
-    const phoneInput = document.getElementById('phone');
-    if (phoneInput) {
-        phoneInput.addEventListener('input', function(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (value.length <= 11) {
-                if (value.length <= 2) {
-                    value = value.replace(/(\d{0,2})/, '($1');
-                } else if (value.length <= 7) {
-                    value = value.replace(/(\d{2})(\d{0,5})/, '($1) $2');
-                } else {
-                    value = value.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-                }
-            }
-            e.target.value = value;
-        });
-    }
+    // Não há formatação específica necessária para o campo de confirmação
 }
 
 // Manipular submit do form de login
@@ -167,14 +149,12 @@ function handleReasonSubmit(e) {
 function handleConfirmationSubmit(e) {
     e.preventDefault();
     
-    const fullName = document.getElementById('full-name').value;
-    const phone = document.getElementById('phone').value;
-    const birthDate = document.getElementById('birth-date').value;
+    const confirmationText = document.getElementById('confirmation-text').value;
     const termsAgreement = document.getElementById('terms-agreement').checked;
 
     // Validações
-    if (!fullName || !phone || !birthDate) {
-        showError('Por favor, preencha todos os campos obrigatórios.');
+    if (!confirmationText) {
+        showError('Por favor, digite a frase de confirmação.');
         return;
     }
 
@@ -183,25 +163,14 @@ function handleConfirmationSubmit(e) {
         return;
     }
 
-    if (fullName.trim().split(' ').length < 2) {
-        showError('Por favor, insira seu nome completo.');
-        return;
-    }
-
-    if (phone.replace(/\D/g, '').length < 10) {
-        showError('Por favor, insira um telefone válido.');
-        return;
-    }
-
-    if (!isValidBirthDate(birthDate)) {
-        showError('Por favor, insira uma data de nascimento válida.');
+    // Validar se o texto digitado está correto (case-insensitive)
+    if (confirmationText.trim().toLowerCase() !== 'encerrar assinatura') {
+        showError('Por favor, digite exatamente "Encerrar Assinatura" para confirmar.');
         return;
     }
 
     // Salvar dados
-    formData.fullName = fullName;
-    formData.phone = phone;
-    formData.birthDate = birthDate;
+    formData.confirmationText = confirmationText;
 
     // Simular processamento e redirecionar para pagamento
     const submitBtn = e.target.querySelector('button[type="submit"]');
@@ -296,21 +265,6 @@ function updateProgressBar() {
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-}
-
-// Validar data de nascimento
-function isValidBirthDate(date) {
-    const birthDate = new Date(date);
-    const currentDate = new Date();
-    const age = currentDate.getFullYear() - birthDate.getFullYear();
-    
-    // Verificar se a pessoa tem pelo menos 13 anos
-    if (age < 13) return false;
-    
-    // Verificar se a data não é no futuro
-    if (birthDate > currentDate) return false;
-    
-    return true;
 }
 
 // Mostrar estado de loading no botão
@@ -515,9 +469,7 @@ function resetForm() {
         password: '',
         plan: '',
         reason: '',
-        fullName: '',
-        phone: '',
-        birthDate: ''
+        confirmationText: ''
     };
     
     // Limpar todos os inputs
